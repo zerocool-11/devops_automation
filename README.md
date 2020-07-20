@@ -1,4 +1,4 @@
-here's the code for creating jenkins image
+#here's the code for creating jenkins image
 
 FROM ubuntu
 RUN apt update
@@ -30,12 +30,12 @@ CMD service jenkins start  && bash
 EXPOSE 8080
 
 
-after this simply run docker run command with jenkins image
+#after this simply run docker run command with jenkins image
 
 
 
-in this job1 we copied the code from github using pollscm
-so that whenever dev push it will clone and copied to jenkins
+#in this job1 we copied the code from github using pollscm
+#so that whenever dev push it will clone and copied to jenkins
 
 build_shell
 
