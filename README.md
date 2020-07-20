@@ -1,4 +1,4 @@
-# header here's the code for creating jenkins image
+### here's the code for creating jenkins image
 
 FROM ubuntu
 RUN apt update
