@@ -1,3 +1,4 @@
+# auto_deployment using jenkins and docker
 ### here's the code for creating jenkins image
 
 FROM ubuntu
@@ -30,20 +31,20 @@ CMD service jenkins start  && bash
 EXPOSE 8080
 
 
-# after this simply run docker run command with jenkins image
+### after this simply run docker run command with jenkins image
 
 
 
-# in this job1 we copied the code from github using pollscm
-# so that whenever dev push it will clone and copied to jenkins
+### in this job1 we copied the code from github using pollscm
+### so that whenever dev push it will clone and copied to jenkins
 
-# build_shell
+### build_shell
 
 sudo cp * /mnt   (note - i already mounted my host folder with /mnt folder if jenkin so that whenever something get copied it will added to my host folder   )
 
 In the second job_2 i launched a new docker container for testing if its not there    after job_1 completed successfully
 
-# build_shell code:
+### build_shell code:
 
 if sudo docker ps| grep test
 
@@ -58,15 +59,15 @@ sudo docker run -dit --name test -v /home/zerocool/Desktop/jenkins_data:/var/www
 fi
 
 
-# note :- before this you have to mount one more file with your jenkins container i.e.  /var/run/docker.sock:/var/run/docker.sock
+### note :- before this you have to mount one more file with your jenkins container i.e.  /var/run/docker.sock:/var/run/docker.sock
 
-# so that you can launch container inside of container  but before this install docker in that container
+### so that you can launch container inside of container  but before this install docker in that container
 
 
-# Now, job_3 is for testing and mailing here i used curl for testing and if its response is 200 then it means its working fine  
-# otherwise exit 1
+### Now, job_3 is for testing and mailing here i used curl for testing and if its response is 200 then it means its working fine  
+### otherwise exit 1
 
-# here's the shell code:
+### here's the shell code:
 
 #!/bin/bash
 
@@ -83,10 +84,10 @@ exit 1
 fi
 
 
-# and after this in the post build action select mail notification  and configure mail in jenkins setting
+### and after this in the post build action select mail notification  and configure mail in jenkins setting
 
-# then you'll get mail everytime whenever job3 fails
+### then you'll get mail everytime whenever job3 fails
 
-# and there is also a job 4 to check if the testing container crash then it will restart
+### and there is also a job 4 to check if the testing container crash then it will restart
 
 
